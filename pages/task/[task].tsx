@@ -1,4 +1,4 @@
-import { Button, Text } from "@geist-ui/react";
+import { Button, Text, User } from "@geist-ui/react";
 import Layout from "components/layout";
 import { withAuth } from "hooks/auth";
 import { Task } from "lib/models";
@@ -17,7 +17,16 @@ export default function TaskPage() {
   };
   return (
     <Layout>
-      <Text h2>{task.name}</Text>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: 20,
+        }}
+      >
+        <Text h2>{task.name}</Text>
+        <User name={task.author} />
+      </div>
       <iframe
         style={{ width: "100%", height: 400 }}
         src={task.documentUrl}

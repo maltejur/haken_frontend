@@ -30,11 +30,7 @@ export default function Dashboard() {
               "https://szkopul.edu.pl/c/hhgym-informatik-ag/p/olympiade/",
           },
         ] as Task[]).map((task) => (
-          <Card
-            shadow
-            style={{ marginTop: "20px !important", maxWidth: 400 }}
-            key={task.id}
-          >
+          <Card shadow className="dashboardCard" key={task.id}>
             <Card.Content>
               <User name={task.author} />
               <Text h4>{task.name}</Text>

@@ -6,3 +6,25 @@
 .blackOnHover:hover {
   color: black;
 }
+
+.cardLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.cardLayout > div {
+  width: auto !important;
+  pointer-events: initial;
+}
+
+.dashboardCard {
+  margin-top: 20px !important;
+  max-width: 400px;
+}
