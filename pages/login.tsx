@@ -4,6 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import { FormEvent, useState } from "react";
 import Cookies from "js-cookie";
 import { GetServerSideProps } from "next";
+import { fetchTasks } from "hooks/tasks";
 
 export default function Login({ to }: { to: string }) {
   const router = useRouter();
@@ -13,11 +14,13 @@ export default function Login({ to }: { to: string }) {
   function onSubmit(event?: FormEvent<HTMLFormElement>) {
     if (event) event.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    fetchTasks(password).then((ok) => {
       setLoading(false);
-      Cookies.set("token", password);
-      router.push(to || "/dashboard");
-    }, 1000);
+      if (ok) {
+        Cookies.set("token", password);
+        router.push("/dashboard");
+      }
+    });
   }
 
   return (
@@ -28,12 +31,12 @@ export default function Login({ to }: { to: string }) {
         style={{ display: "flex", flexDirection: "column" }}
       >
         <Input
-          type="password"
+          // type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           disabled={loading}
         >
-          Passwort
+          Token
         </Input>
         <Button
           auto
