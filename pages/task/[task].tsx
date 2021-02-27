@@ -44,7 +44,7 @@ export default function TaskPage({ id }: { id: number }) {
             <Card.Content style={{ padding: 0, height: 400 }}>
               <iframe
                 style={{ width: "100%", height: 400 }}
-                src={`http://poodlenoodle42.spdns.org:8080/auth/tasks/${id}/pdf?token=${Cookies.get(
+                src={`https://poodlenoodle42.spdns.org:8080/auth/tasks/${id}/pdf?token=${Cookies.get(
                   "token"
                 )}`}
                 frameBorder={0}

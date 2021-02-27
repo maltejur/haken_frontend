@@ -29,7 +29,7 @@ export function useTasks() {
 export function useTask(id: number) {
   const groups = useTasks();
   const { data } = useSWR<Subtask[]>(
-    `http://poodlenoodle42.spdns.org:8080/auth/tasks/${id}`,
+    `https://poodlenoodle42.spdns.org:8080/auth/tasks/${id}`,
     fetcher
   );
 
@@ -49,7 +49,7 @@ export function TaskProvider({ children }) {
 
   fetchTasks = async (token) => {
     const response = await fetch(
-      "http://poodlenoodle42.spdns.org:8080/auth/tasks",
+      "https://poodlenoodle42.spdns.org:8080/auth/tasks",
       { headers: { token } }
     );
     if (response.ok) {
