@@ -4,7 +4,7 @@ import Navbar from "./navbar";
 
 export default function Layout({ children }) {
   return (
-    <Page>
+    <Page style={{ position: "unset" }}>
       <Navbar />
       <div
         style={{ marginTop: "50px", display: "flex", flexDirection: "column" }}
