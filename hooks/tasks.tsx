@@ -8,38 +8,12 @@ const initialState: Group[] = [];
 
 const TaskContext = createContext(initialState);
 
-async function fetcher(url: string) {
-  return (
-    await axios.get(url, {
-      headers: {
-        token: Cookies.get("token"),
-      },
-    })
-  ).data;
-}
-
 export function useTasks() {
   useEffect(() => {
     fetchTasks(Cookies.get("token"));
   }, []);
 
   return useContext(TaskContext);
-}
-
-export function useTask(id: number) {
-  const groups = useTasks();
-  const { data } = useSWR<Subtask[]>(
-    `https://poodlenoodle42.spdns.org:8080/auth/tasks/${id}`,
-    fetcher
-  );
-
-  for (const group of groups) {
-    for (const task of group.tasks) {
-      if (task.id == id) return { task, subtasks: data };
-    }
-  }
-
-  return { task: undefined, subtasks: undefined };
 }
 
 export let fetchTasks: (token: string) => Promise<boolean>;

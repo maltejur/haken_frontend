@@ -14,8 +14,9 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { Play } from "@geist-ui/react-icons";
 import useSWR from "swr";
-import { useTask, useTasks } from "hooks/tasks";
+import { useTasks } from "hooks/tasks";
 import Cookies from "js-cookie";
+import useTask from "hooks/task";
 
 const MonacoEditor = dynamic(import("react-monaco-editor"), { ssr: false });
 
