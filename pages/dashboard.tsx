@@ -1,4 +1,4 @@
-import { Button, Card, Text, User } from "@geist-ui/react";
+import { Button, Card, Description, Text, User } from "@geist-ui/react";
 import Layout from "components/layout";
 import { withAuth } from "hooks/auth";
 import { useTasks } from "hooks/tasks";
@@ -14,7 +14,7 @@ export default function Dashboard() {
       <div style={{ display: "flex", flexDirection: "column" }}>
         {tasks.map((group) => (
           <>
-            <Text>{group.name}</Text>
+            <Description style={{ marginTop: 30 }} title={group.name} />
             {group.tasks.map((task) => (
               <Card shadow className="dashboardCard" key={task.id}>
                 <Card.Content>
